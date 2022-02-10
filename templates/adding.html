@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'cdnlines.html' %}
+    <title>Document</title>
+</head>
+<style media="screen">
+    input{
+        margin-top:2px;
+    }
+    form{
+        box-shadow: 0px 0px 20px blue,0px 0px 10px black;
+        margin-top:100px;
+        padding: 10px;
+        border-radius: 5%;
+    }
+    body{
+        background-image: url(https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg);
+
+    } 
+</style>
+<body>       
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-3 col-md-6">
+                <form method="POST">
+                    {% csrf_token %}
+                    <h3 class="text-center text-warning">Student Informations</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" name="fname" class="form-control" placeholder="first Name">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="lname" class="form-control" placeholder="last Name">
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="number" name="fee" class="form-control" placeholder="fee">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="course" class="form-control" placeholder="Course Name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"><input type="number" name="a1" class="form-control" placeholder="Assignment1 marks">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" name="a2" class="form-control" placeholder="Assignment2 marks">
+                        </div>                       
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="number" name="a3" class="form-control" placeholder="Assignment3 marks">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" name="a4" class="form-control" placeholder="Assigment4 marks">
+                        </div>
+                    </div>              
+                    <center>
+                        <input type="submit" value="save" class="btn btn-success" onclick="return confirm('Do u want to add one row')">
+                        <input type="reset" value="clear" class="btn btn-danger"><br>
+                        <a href="{% url 'fetching' %}" class="btn btn-dark" style="margin-top:5px;">Go to Table</a>
+                    </center>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

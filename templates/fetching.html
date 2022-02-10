@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'cdnlines.html' %}
+    <title>Document</title>
+</head>
+<style media="screen">
+    body{
+        background-image: url(https://image.shutterstock.com/image-illustration/3d-nature-forest-animals-wallpaper-260nw-1707263671.jpg);
+    }
+
+</style>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center text-danger">Student Information...!!!</h1>
+                <a href="{% url 'adding' %}" class="btn btn-primary" style="float: right;">Add New Student</a>
+                {% if student %}
+                <table class="table table-border text-center">
+                    <thead class="bg-success text-white">
+                        <tr>
+                            <th>first Name</th>
+                            <th>last Name</th>
+                            <th>Course</th>
+                            <th>fee</th>
+                            <th>Assignment1</th>
+                            <th>Assignment2</th>
+                            <th>Assignment3</th>
+                            <th>Assigment4</th>
+                            <th>Total</th>
+                            <th>Average</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-dark text-white">
+                        {% for teacher in student %}
+                        <tr>
+                            <td>{{ teacher.first_name }}</td>
+                            <td>{{ teacher.last_name }}</td>
+                            <td>{{ teacher.course }}</td>
+                            <td>{{ teacher.fee }}</td>
+                            <td>{{ teacher.assignment1 }}</td>
+                            <td>{{ teacher.assignment2 }}</td>
+                            <td>{{ teacher.assignment3 }}</td>
+                            <td>{{ teacher.assignment4 }}</td>
+                            <td>{{ teacher.Total }}</td>
+                            <td>{{ teacher.Avg }}</td>
+                            <td>
+                                <a href="{% url 'update' teacher.id %}" class="btn btn-outline-success btn-sm">Update</a>
+                                <a href="{% url 'delete' teacher.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <h3>NO Students Data Available..</h3>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
